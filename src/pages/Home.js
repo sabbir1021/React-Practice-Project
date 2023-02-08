@@ -25,6 +25,12 @@ function Home() {
   return (
     <Container className='mt-3 mb-5'>
       <h2 className='text-center mb-3'>Product List</h2>
+      <nav class="navbar navbar-light bg-light">
+        <form >
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
       <Row xs={1} md={3} className="g-4">
 
         {products.length > 0 && (
