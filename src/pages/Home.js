@@ -1,4 +1,4 @@
-import {Table, Container, Button} from 'react-bootstrap';
+import {Card, Col, Row, Container, Button} from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
@@ -25,27 +25,29 @@ function Home() {
   return (
     <Container className='mt-3 mb-5'>
       <h2 className='text-center mb-3'>Product List</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length > 0 && (
-            products.map(product => (
-              <tr>
-                <td>{product.name}</td>
-                <td>{product.category.name}</td>
-                <td><Button  as={Link} to={`/product/${product.id}`}>Details</Button></td>
-              </tr>
+      <Row xs={1} md={3} className="g-4">
+
+        {products.length > 0 && (
+              products.map(product => (
+                <Col>
+                  <Card>
+                    <Card.Img variant="top" src={product.thumbnail} />
+                    <Card.Body>
+                      <h2 className='text-success'>${product.price}</h2>
+                      <Card.Title>{product.name}</Card.Title>
+                      <Card.Text>
+                          {product.category.name}
+                      </Card.Text>
+                      
+                      <Button as={Link} to={`/product/${product.id}`} variant="primary">View details</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+                
             ))
           )}
-          
-        </tbody>
-      </Table>
+                  
+    </Row>
     </Container>
   );
 }
