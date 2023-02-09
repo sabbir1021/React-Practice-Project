@@ -35,6 +35,7 @@ function Login() {
                 setMessage("Login successfully");
                 setShowToast(true)
                 navigate("/profile");
+                window.location.reload();
                 
             } else {
                 setMessage("Login Faild");
