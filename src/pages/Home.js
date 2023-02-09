@@ -22,6 +22,43 @@ function Home() {
     fetchData()
   }, [])
 
+  const shoot = (a) => {
+    let products = JSON.parse(localStorage.getItem('cart'));
+    if (products) {
+      for (let i = 0; i < products.length; i++) {
+          if (products[i].id === a.id) {
+            products[i].quantity = products[i].quantity+ 1
+            const add_products = JSON.stringify(products);
+            localStorage.setItem('cart', add_products);
+            return
+          }
+      }
+      const data = {
+        'id': a.id,
+        'name': a.name,
+        'quantity': 1,
+        'maxQuantity': a.quantity,
+        'price': a.price,
+        'image': a.thumbnail
+      }
+      products.push(data)
+      const add_products = JSON.stringify(products);
+      localStorage.setItem('cart', add_products);
+      
+    } else {
+      const data = {
+        'id': a.id,
+        'name': a.name,
+        'quantity': 1,
+        'maxQuantity': a.quantity,
+        'price': a.price,
+        'image': a.thumbnail
+      }
+      const product = JSON.stringify([data]);
+      localStorage.setItem('cart', product);
+    }
+  }
+
   return (
     <Container className='mt-3 mb-5'>
       <h2 className='text-center mb-3'>Product List</h2>
@@ -46,6 +83,7 @@ function Home() {
                       </Card.Text>
                       
                       <Button as={Link} to={`/product/${product.id}`} variant="primary">View details</Button>
+                      <Button onClick={() => shoot(product)} variant="primary">Add To Cart</Button>
                     </Card.Body>
                   </Card>
                 </Col>

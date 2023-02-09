@@ -17,6 +17,7 @@ function NavBar() {
           <Nav.Link as={Link} to="/blogs">Blog</Nav.Link>
         </Nav>
         <Nav>
+        <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
         {token ? <>
         <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
         <Nav.Link as={Link} to="/logout">Log Out</Nav.Link>

@@ -7,6 +7,7 @@ import BlogDetails from "./pages/BlogDetails";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/login" element={ <Login/> } />
       <Route path="/profile" element={ <Profile/> } />
       <Route path="/logout" element={ <Logout/> } />
+      <Route path="/cart" element={ <Cart/> } />
       </Routes>
     </div>
   );
