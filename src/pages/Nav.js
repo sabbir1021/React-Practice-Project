@@ -7,7 +7,7 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-      <Navbar.Brand as={Link} to="/">Supper Pharmacy</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">React Practice</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
@@ -15,10 +15,9 @@ function NavBar() {
           <Nav.Link as={Link} to="/blogs">Blog</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="#deets">About Us</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Contact Us
-          </Nav.Link>
+          <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+          <Nav.Link as={Link} to="/login">Log In</Nav.Link>
+          <Nav.Link as={Link} to="/logout">Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
