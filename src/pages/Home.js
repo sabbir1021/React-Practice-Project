@@ -46,6 +46,7 @@ function Home() {
       const data = {
         'id': a.id,
         'name': a.name,
+        'category': a.category.name,
         'quantity': 1,
         'maxQuantity': a.quantity,
         'price': a.price,
@@ -59,6 +60,7 @@ function Home() {
       const data = {
         'id': a.id,
         'name': a.name,
+        'category': a.category.name,
         'quantity': 1,
         'maxQuantity': a.quantity,
         'price': a.price,
