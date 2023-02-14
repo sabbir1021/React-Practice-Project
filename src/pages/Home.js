@@ -10,14 +10,13 @@ function Home() {
 
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState("");
+  const [page, setPage] = useState(1);
+  const [page_size, setPagesize] = useState(12);
+  const [next_page, setNextPage] = useState(null);
+  const [previous_page, setPreviousPage] = useState(null);
 
   const fetchData = async () => {
-    if (!pagination) {
-      setPagination("page=1&page_size=12")
-    }
-    console.log('-----------',pagination);
-    await fetch('https://api.superpharmacycompounding.com.au/api/v1.0/products/user/products/?'+ `${pagination}`+ '&' + new URLSearchParams({
+    await fetch('https://api.superpharmacycompounding.com.au/api/v1.0/products/user/products/?'+ `page=${page}&page_size=${page_size}`+ '&' + new URLSearchParams({
       show_in_search: false}) + `&search=${query}`
       )
       .then(response => {
@@ -25,12 +24,14 @@ function Home() {
       })
       .then(data => {
         setProducts(data.data)
+        setNextPage(data.meta_data.next)
+        setPreviousPage(data.meta_data.previous)
       })
   }
 
   useEffect(() => {
     fetchData()
-  }, [query, pagination])
+  }, [query, page, page_size])
 
   const shoot = (a) => {
     let products = JSON.parse(localStorage.getItem('cart'));
@@ -140,15 +141,34 @@ function Home() {
             )}
                     
         </Row>
-        <Pagination className='mt-5 justify-content-center'>
-          <Pagination.First disabled/>
-          <Pagination.Prev  disabled/>
-          <Pagination.Ellipsis disabled />
-          <Pagination.Item active>{12}</Pagination.Item>
-          <Pagination.Ellipsis disabled />
-          <Pagination.Next />
-          <Pagination.Last />
-        </Pagination>
+          <nav className='mt-5'>
+            <ul class="pagination justify-content-center">
+              {previous_page 
+                ?
+                (<li class="page-item">
+                  <button class="page-link" onClick={() => setPage(previous_page)}>Previous</button>
+                </li>)  
+                : (<li class="page-item disabled">
+                  <button class="page-link">Previous</button>
+                </li>)
+              }
+
+              <li class="page-item active" aria-current="page">
+                <a class="page-link">{page}</a>
+              </li>
+
+              {next_page
+                ? 
+                ( <li class="page-item">
+                  <button class="page-link" onClick={() => setPage(next_page)}>Next</button>
+                </li>)
+                : (<li class="page-item disabled">
+                  <button class="page-link">Next</button>
+                </li>)
+              }
+              
+            </ul>
+          </nav>
       </Container>
     </div>
   );
