@@ -1,16 +1,14 @@
 import {Form, Container, Button, Row} from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import {toast} from 'react-toastify';
-import Toasts from './Toasts';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
-    const [showToast, setShowToast]= useState(false)
     const navigate = useNavigate();
 
     let handleSubmit = async (e) => {
@@ -32,14 +30,12 @@ function Login() {
             if (res.status === 201) {
                 localStorage.setItem('access_token', resJson.data.access_token);
                 localStorage.setItem('refresh_token', resJson.data.refresh_token);
-                setMessage("Login successfully");
-                setShowToast(true)
+                toast.success("Login successfully");
                 navigate("/profile");
-                window.location.reload();
+                
                 
             } else {
-                setMessage("Login Faild");
-                setShowToast(true)
+                toast.error(resJson.message);
             }
         } catch (err) {
             console.log(err);
@@ -48,7 +44,6 @@ function Login() {
 
     return (
         <Container className='mt-3 mb-5'>
-            {showToast?<Toasts message={message}/>:''}
 
             <h2 className='text-center mb-3'>Login</h2>
             <Row xs={1} md={3} className="g-4 justify-content-center">
@@ -71,6 +66,7 @@ function Login() {
             </Button>
             </Form>
             </Row>
+        <ToastContainer />
         </Container>
     );
 }
