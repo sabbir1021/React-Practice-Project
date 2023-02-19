@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
 import Cart from "./pages/Cart";
 import Invoice from "./pages/Invoice";
+import ModalFrom from "./pages/ModalForm"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/logout" element={ <Logout/> } />
       <Route path="/cart" element={ <Cart/> } />
       <Route path="/invoice" element={ <Invoice/> } />
+      <Route path="/modalform" element={ <ModalFrom/> } />
       </Routes>
     </div>
   );

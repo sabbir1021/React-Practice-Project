@@ -1,8 +1,9 @@
 import {Card, Col, Row, Container, Button, Carousel, Pagination} from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import cover1 from '../images/banner.jpeg';
-import cover2 from '../images/banner2.jpeg';
+import cover1 from '../images/banner1.jpg';
+import cover2 from '../images/banner2.jpg';
+import cover3 from '../images/banner3.jpg';
 
 
 function Home() {
@@ -85,6 +86,13 @@ function Home() {
           <img
             className="d-block w-100"
             src={cover2}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={cover3}
             alt="First slide"
           />
         </Carousel.Item>
