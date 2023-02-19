@@ -1,4 +1,4 @@
-import {Card, Col, Row, Container, Button, Carousel, Pagination} from 'react-bootstrap';
+import {Card, Col, Row, Container, Button, Carousel} from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import cover1 from '../images/banner1.jpg';
@@ -100,10 +100,10 @@ function Home() {
       </Carousel>
       <Container className='mt-5 mb-5'>
         <h2 className='text-center mb-3'>Product List</h2>
-        <div class="row">
-          <div class="col-md-5 mx-auto">
-              <div class="input-group">
-                  <input onChange={(e)=> setQuery(e.target.value)} class="form-control " type="text" />
+        <div className="row">
+          <div className="col-md-5 mx-auto">
+              <div className="input-group">
+                  <input onChange={(e)=> setQuery(e.target.value)} className="form-control " type="text" />
                   {/* <span class="input-group-append">
                       <button class="btn btn-outline-success" type="button">
                           Search
@@ -126,11 +126,11 @@ function Home() {
                         <Card.Text>
                             {product.category.name}
                         </Card.Text>
-                        <div class="d-grid mt-2">
+                        <div className="d-grid mt-2">
                           <Button onClick={() => shoot(product)} variant="success">Add To Cart</Button>
                         </div>
 
-                        <div class="d-grid mt-2">
+                        <div className="d-grid mt-2">
                           <Button className='float-right' as={Link} to={`/product/${product.id}`} variant="primary">View details</Button>
                         </div>
                       </Card.Body>
@@ -142,28 +142,28 @@ function Home() {
                     
         </Row>
           <nav className='mt-5'>
-            <ul class="pagination justify-content-center">
+            <ul className="pagination justify-content-center">
               {previous_page 
                 ?
-                (<li class="page-item">
-                  <button class="page-link" onClick={() => setPage(previous_page)}>Previous</button>
+                (<li className="page-item">
+                  <button className="page-link" onClick={() => setPage(previous_page)}>Previous</button>
                 </li>)  
-                : (<li class="page-item disabled">
-                  <button class="page-link">Previous</button>
+                : (<li className="page-item disabled">
+                  <button className="page-link">Previous</button>
                 </li>)
               }
 
-              <li class="page-item active" aria-current="page">
-                <a class="page-link">{page}</a>
+              <li className="page-item active" aria-current="page">
+                <a className="page-link">{page}</a>
               </li>
 
               {next_page
                 ? 
-                ( <li class="page-item">
-                  <button class="page-link" onClick={() => setPage(next_page)}>Next</button>
+                ( <li className="page-item">
+                  <button className="page-link" onClick={() => setPage(next_page)}>Next</button>
                 </li>)
-                : (<li class="page-item disabled">
-                  <button class="page-link">Next</button>
+                : (<li className="page-item disabled">
+                  <button className="page-link">Next</button>
                 </li>)
               }
               

@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Card, Col, Row, Container, Button, Carousel, Pagination} from 'react-bootstrap';
+import {Card, Col, Row, Container, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 
@@ -14,7 +14,6 @@ function ModalFrom() {
   const handleShow = () => setShow(true);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -96,7 +95,7 @@ function ModalFrom() {
       </Button>
       
       <div className="mt-3 col-3">
-        <select class="form-select" aria-label="Default select example" onChange={(e) => setCategoryFilter(e.target.value)}>
+        <select className="form-select" aria-label="Default select example" onChange={(e) => setCategoryFilter(e.target.value)}>
           <option selected>Select Category</option>
           {category.length > 0 && (
                 category.map(category => (

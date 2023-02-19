@@ -1,6 +1,5 @@
-import {Card, Col, Row, Container, Button, Carousel, Pagination} from 'react-bootstrap';
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+import { Container, Button} from 'react-bootstrap';
+import React, { useState } from "react"
 import ReactDOM from 'react-dom/client';
 
 
@@ -43,27 +42,27 @@ function Invoice() {
       <Container className='mt-5 mb-5'>
         <h2 className='text-center mb-3'>Invoice List</h2>
         
-        <div class="row g-2 " id="addnew">
-          <div class="col-md-3">
-            <label class="form-label">Product</label>
-            <select class="form-select" aria-label="Floating label select example">
+        <div className="row g-2 " id="addnew">
+          <div className="col-md-3">
+            <label className="form-label">Product</label>
+            <select className="form-select" aria-label="Floating label select example">
               <option selected>Select product</option>
               <option value="1">HP</option>
               <option value="2">Dell</option>
               <option value="3">Vivo</option>
             </select>
           </div>
-          <div class="col-md-3">
-            <label class="form-label">Price</label>
-            <input type="text" class="form-control" onChange={(e)=> priceSet(e.target.value)} placeholder="0" />
+          <div className="col-md-3">
+            <label className="form-label">Price</label>
+            <input type="text" className="form-control" onChange={(e)=> priceSet(e.target.value)} placeholder="0" />
           </div>
-          <div class="col-md-3">
-            <label class="form-label">Quantity</label>
-            <input type="text" class="form-control" onChange={(e)=> quantitySet(e.target.value)} placeholder="0" />
+          <div className="col-md-3">
+            <label className="form-label">Quantity</label>
+            <input type="text" className="form-control" onChange={(e)=> quantitySet(e.target.value)} placeholder="0" />
           </div>
-          <div class="col-md-3">
-            <label class="form-label">Total</label>
-            <input type="text" class="form-control" placeholder="0" value={total} disabled />
+          <div className="col-md-3">
+            <label className="form-label">Total</label>
+            <input type="text" className="form-control" placeholder="0" value={total} disabled />
           </div>
         </div>
         <Button onClick={()=> newrow()}>+</Button>
