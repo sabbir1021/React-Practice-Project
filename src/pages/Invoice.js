@@ -1,9 +1,6 @@
 import {Card, Col, Row, Container, Button, Carousel, Pagination} from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import cover1 from '../images/HeaderCover1.jpg';
-import cover2 from '../images/HeaderCover2.jpg';
-import cover3 from '../images/HeaderCover3.jpg';
 import ReactDOM from 'react-dom/client';
 
 
