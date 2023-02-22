@@ -167,7 +167,6 @@ function ModalFrom() {
             )}
         </Row>
       </Container>
-      <ToastContainer />
       </Container>
     </>
   );

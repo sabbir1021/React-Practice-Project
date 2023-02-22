@@ -6,6 +6,7 @@ import Blog from "./pages/Blog";
 import BlogDetails from "./pages/BlogDetails";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import ProfileEdit from "./pages/ProfileEdit";
 import Logout from "./pages/Logout";
 import Cart from "./pages/Cart";
 import Invoice from "./pages/Invoice";
@@ -22,6 +23,7 @@ function App() {
       <Route path="/blog/:id" element={ <BlogDetails/> } />
       <Route path="/login" element={ <Login/> } />
       <Route path="/profile" element={ <Profile/> } />
+      <Route path="/profile-edit" element={ <ProfileEdit/> } />
       <Route path="/logout" element={ <Logout/> } />
       <Route path="/cart" element={ <Cart/> } />
       <Route path="/invoice" element={ <Invoice/> } />
