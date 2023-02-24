@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Card, Col, Row, Container, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
