@@ -41,6 +41,9 @@ function Profile() {
                     <Card.Title className='text-center'>Phone: {user.phone_number}</Card.Title>
                     
                 </Card.Body>
+                <div className=" mt-2 mb-2 text-center">
+                  <Button className='mx-auto' as={Link} to={'/profile-edit'} variant="primary">Edit Profile</Button>
+                </div>
                 </Card>
             </Col>
         </Row>
