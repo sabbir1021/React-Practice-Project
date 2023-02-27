@@ -9,26 +9,33 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileEdit() {
 
+  const [loading, setLoading] = useState(false)
   const token = localStorage.getItem('access_token');
   const navigate = useNavigate();
 
-  const fetchData = () => {
-    fetch('https://api.superpharmacycompounding.com.au/api/v1.0/accounts/admin/profile/' , {
+  const fetchData = async () => {
+    try {
+      let res = await fetch("https://api.superpharmacycompounding.com.au/api/v1.0/accounts/admin/profile/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         }
-      })
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setFName(data.data.first_name)
-        setLName(data.data.last_name)
-        setPhone(data.data.phone_number)
-      })
+      });
+      let data = await res.json();
+      if (res.status === 401) {
+          navigate("/login");
+          setLoading(true)
+      } else {
+          setFName(data.data.first_name)
+          setLName(data.data.last_name)
+          setPhone(data.data.phone_number)
+          setLoading(true)
+          }
+      } catch (err) {
+          console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -70,6 +77,17 @@ function ProfileEdit() {
 
   return (
     <Container className='mt-3 mb-5'>
+      {!loading? 
+      <>
+        <div class="loader-circle">
+          <p class="loader-content">LOADING</p>
+          <div class="loader-line-mask">
+            <div class="loader-line"></div>
+          </div>
+        </div>
+      </>
+      :
+      <>
       <h2 className='text-center mb-3'>Profile Edit</h2>
       <Row xs={1} md={3} className="g-4 justify-content-center">
         <Form onSubmit={handleSubmit}>
@@ -93,6 +111,7 @@ function ProfileEdit() {
           </Button>
         </Form>
       </Row>
+      </>}
     </Container>
   );
 }
